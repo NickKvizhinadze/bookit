@@ -1,23 +1,21 @@
-import { Head } from "next/document";
 import React from "react";
-import Header from "./header";
-import Footer from "./footer";
+import Head from "next/head";
+import Header from "./Header";
+import Footer from "./Footer";
 
-export const layout = ({
-  children,
-  title = "Book Best Hotels for your Holiday",
-}) => {
+const Layout = ({ children, title = "Book Best Hotels for your Holiday" }) => {
   return (
     <div>
       <Head>
-        <title>{{ title }}</title>
+        <title>{title}</title>
         <meta charSet="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <Header />
-      {{ children }}
+      {children}
       <Footer />
     </div>
   );
 };
+
+export default Layout;

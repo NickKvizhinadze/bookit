@@ -1,6 +1,6 @@
 import React from "react";
 
-export default Header = () => {
+const Header = () => {
   return (
     <nav className="navbar row justify-content-center sticky-top">
       <div className="container">
@@ -23,3 +23,5 @@ export default Header = () => {
     </nav>
   );
 };
+
+export default Header;
