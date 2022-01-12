@@ -1,13 +1,15 @@
 import React, { useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
+import { clearErrors } from "../redux/actions/roomActions";
 import { RoomItem } from "./rooms/roomItem";
 
 const Home = () => {
+  const dispatch = useDispatch();
   const { rooms, error } = useSelector((state) => state.allRooms);
-
   useEffect(() => {
     toast.error(error);
+    dispatch(clearErrors);
   }, []);
 
   return (
@@ -19,7 +21,7 @@ const Home = () => {
       </a>
       <div className="row">
         {rooms && rooms.length > 0 ? (
-          rooms.map((room) => <RoomItem key={room.id} room={room} />)
+          rooms.map((room) => <RoomItem key={room._id} room={room} />)
         ) : (
           <div className="alert alert-danger">
             <b>No Rooms.</b>
