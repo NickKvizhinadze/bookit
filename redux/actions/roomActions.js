@@ -9,6 +9,7 @@ import {
 export const getRooms = (req) => async (dispatch) => {
   try {
     const { origin } = absoluteUrl(req);
+    debugger;
     const { data } = await axios.get(`${origin}/api/rooms`);
 
     dispatch({
