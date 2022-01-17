@@ -1,5 +1,5 @@
 import NextAuth from "next-auth";
-import Providers from "next-auth/providers";
+import CredentialsProvider from "next-auth/providers/credentials";
 
 import User from "../../../models/user";
 import dbConnect from "../../../config/dbConnect";
@@ -7,8 +7,9 @@ import dbConnect from "../../../config/dbConnect";
 export default NextAuth({
   session: { jwt: true },
   providers: [
-    Providers.Credentials({
-      async authorize(credentials) {
+    CredentialsProvider({
+      name: "Credentials",
+      async authorize(credentials, req) {
         dbConnect();
         const { email, password } = credentials;
         if (!email || !password) {
@@ -25,7 +26,7 @@ export default NextAuth({
           throw new Error("Invalid Email or Password");
         }
 
-        return Promise.resolve(user);
+        return user;
       },
     }),
   ],
