@@ -43,7 +43,6 @@ const Login = () => {
                 onChange={(e) => setEmail(e.target.value)}
               />
             </div>
-
             <div className="form-group">
               <label htmlFor="password_field">Password</label>
               <input
@@ -54,11 +53,9 @@ const Login = () => {
                 onChange={(e) => setPassword(e.target.value)}
               />
             </div>
-
             <a href="#" className="float-right mb-4">
               Forgot Password?
             </a>
-
             <button
               id="login_button"
               type="submit"
@@ -67,10 +64,9 @@ const Login = () => {
             >
               {loading ? <ButtonLoader /> : "LOGIN"}
             </button>
-
-            <a href="#" className="float-right mt-3">
-              New User?
-            </a>
+            <Link href="/register">
+              <a className="float-right mt-3">New User?</a>
+            </Link>
           </form>
         </div>
       </div>

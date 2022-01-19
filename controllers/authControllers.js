@@ -25,7 +25,7 @@ const registerUser = catchAsyncError(async (req, res) => {
     password,
     avatar: {
       public_id: result.public_id,
-      url: result.secret_url,
+      url: result.secure_url,
     },
   });
 
