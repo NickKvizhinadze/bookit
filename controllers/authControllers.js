@@ -12,9 +12,9 @@ cloudinary.config({
 
 const registerUser = catchAsyncError(async (req, res) => {
   const result = await cloudinary.v2.uploader.upload(req.body.avatar, {
-    folder: 'bookit/avatars',
-    width: '150',
-    crop: 'scale'
+    folder: "bookit/avatars",
+    width: "150",
+    crop: "scale",
   });
 
   const { name, email, password } = req.body;
@@ -35,4 +35,13 @@ const registerUser = catchAsyncError(async (req, res) => {
   });
 });
 
-export { registerUser };
+const currentUserProfile = catchAsyncError(async (req, res) => {
+  const user = await User.findById(req.user._id);
+
+  res.status(200).json({
+    success: true,
+    user,
+  });
+});
+
+export { registerUser, currentUserProfile };

@@ -42,7 +42,7 @@ const Home = () => {
         </Link>
         <div className="row">
           {rooms && rooms.length > 0 ? (
-            rooms.map((room) => <RoomItem key={room.id} room={room} />)
+            rooms.map((room) => <RoomItem key={room._id} room={room} />)
           ) : (
             <div className="alert alert-danger mt-5 w-100">
               <b>No Rooms.</b>
@@ -51,7 +51,7 @@ const Home = () => {
         </div>
       </section>
       {resPerPage < count && (
-        <div class="d-flex justify-content-center mt-5">
+        <div className="d-flex justify-content-center mt-5">
           <Pagination
             activePage={page}
             itemsCountPerPage={resPerPage}
