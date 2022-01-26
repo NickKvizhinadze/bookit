@@ -34,7 +34,6 @@ export const Register = () => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    debugger;
 
     const userData = {
       name,
